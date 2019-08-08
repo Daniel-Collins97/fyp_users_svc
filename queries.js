@@ -30,7 +30,7 @@ const getUsersById = (request, response) => {
 const createUser = (request, response) => {
   const { firstName, lastName, age, height, weight, position } = request.body;
 
-  pool.query('INSERT INTO "Users" ("firstName", "lastName", "age", "height", "weight", "position") VALUES ($1, $2, $3, $4, $5, $6)', [firstName, lastName, age, height, weight, position], (error, results) => {
+  pool.query('INSERT INTO "Users" ("firstName", "lastName", "age", "height", "weight", "position") VALUES ($1, $2, $3, $4, $5, $6)', [firstName, lastName, age, height, weight, position], (error) => {
     if (error) {
       throw error
     }
