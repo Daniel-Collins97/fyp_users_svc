@@ -27,14 +27,14 @@ const getUsersById = (request, response) => {
   })
 }
 
-const createUser = (request, resonse) => {
+const createUser = (request, response) => {
   const { firstName, lastName, age, height, weight, position } = request.body;
 
   pool.query('INSERT INTO "Users" ("firstName", "lastName", "age", "height", "weight", "position") VALUES ($1, $2, $3, $4, $5, $6)', [firstName, lastName, age, height, weight, position], (error, results) => {
     if (error) {
       throw error
     }
-    response.status(201).send(`User added with ID: ${result.insertId}`)
+    response.status(201).send(`User added`)
   })
 }
 
@@ -42,7 +42,7 @@ const updateUser = (request, response) => {
   const id = parseInt(request.params.id);
   const { firstName } = request.body;
 
-  pool.query('UPDATE "Users" SET "firstName" = $1 WHERE id =$2', [firstName, id], (error, results) => {
+  pool.query('UPDATE "Users" SET "firstName" = $1 WHERE id =$2', [firstName, id], (error) => {
     if (error) {
       throw error;
     }
@@ -53,7 +53,7 @@ const updateUser = (request, response) => {
 const deleteUser = (request, response) => {
   const id = parseInt(request.params.id);
 
-  pool.query('DELETE FROM "Users" WHERE id = $1', [id], (error, results) => {
+  pool.query('DELETE FROM "Users" WHERE id = $1', [id], (error) => {
     if (error) {
       throw error;
     }
