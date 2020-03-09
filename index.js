@@ -16,7 +16,7 @@ app.get('/', (request, response) => {
 })
 
 app.listen(port, () => {
-  console.log(`App running on port ${port}.`)
+  console.log(`App running on port ${port}. (Docker Container Port 3000)`)
 })
 
 app.get('/users', db.getUsers);
